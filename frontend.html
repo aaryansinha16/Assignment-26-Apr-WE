@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend</title>
+    <link rel="stylesheet" href="common.css">
+    <style>
+       #container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, auto);
+            gap: 30px;
+            width: 80%;
+            margin: auto;
+            margin-top: 40px;
+        }
+        p + img {
+            height: 50px;
+        }
+        div>div{
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        div>img{
+            border-radius: 10px 10px 0 0;
+        }
+        #heading{
+            text-align: center;
+        }
+      </style>
+</head>
+<body>
+    <nav>
+        <div><a href="backend.html">Backend</a></div>
+        <div><a href="frontend.html">Frontend</a></div>
+    </nav>
+    <div id="container"></div>
+</body>
+</html>
+
+<script>
+    var investorArr = JSON.parse(localStorage.getItem("investorData"))
+    console.log(investorArr)
+
+    investorArr.forEach(function(elem){
+        var box = document.createElement("div");
+        var investorImg = document.createElement("img");
+        investorImg.setAttribute("src", elem.investorImg);
+        var investorName = document.createElement("h3");
+        investorName.innerText = elem.investorName;
+        var investorRole = document.createElement("p");
+        investorRole.innerText = elem.investorRole;
+        var investorLogo = document.createElement("img");
+        investorLogo.setAttribute("src", elem.investorLogo);
+        var del = document.createElement("button")
+        del.innerText = "Delete"
+        del.addEventListener("click", delt)
+        box.append(investorImg, investorName, investorRole, investorLogo, del);
+        document.querySelector("#container").append(box);
+    });
+
+    function delt(){
+        event.preventDefault()
+        event.target.parentNode.remove()
+        // event.target.parentNode.localStorage.getItem("investorData", null)
+    }
+</script>

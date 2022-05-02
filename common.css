@@ -1,0 +1,17 @@
+nav{
+    display: flex;
+    width: 98%;
+    margin: auto;
+    background-color: teal;
+    border-radius: 12px;
+    font-size: 28px;
+    justify-content: space-around;
+    padding: 15px;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+a:hover{
+    color: gold;
+}
